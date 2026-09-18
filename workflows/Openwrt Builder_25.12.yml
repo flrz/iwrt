@@ -7,7 +7,7 @@ on:
     #- cron: 0 10 * * 6
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-25.12
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -17,6 +17,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24 : "true"
 
 jobs:
   build:
@@ -77,13 +78,6 @@ jobs:
         cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-
-    #- name: Remove official xray-core feed
-      #working-directory: openwrt
-      #run: |
-        #rm -rf feeds/packages/net/xray-core
-        #rm -rf feeds/packages/net/xray
-        #./scripts/feeds install -a
 
     - name: Download Clash Meta Core (预置到固件)
       working-directory: openwrt
