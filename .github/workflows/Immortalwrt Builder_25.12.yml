@@ -60,7 +60,6 @@ jobs:
          dotnet: true
          haskell: true
          large-packages: true
-         docker-images: true
          swap-storage: true
         
     - name: Clone source code
